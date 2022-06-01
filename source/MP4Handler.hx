@@ -66,20 +66,20 @@ class MP4Handler
 		#else
 		finishCallback = callback;
 
-		vlcBitmap = new VlcBitmap();
+		/*vlcBitmap = new VlcBitmap();
 		vlcBitmap.set_height(FlxG.stage.stageHeight);
-		vlcBitmap.set_width(FlxG.stage.stageHeight * (16 / 9));
+		vlcBitmap.set_width(FlxG.stage.stageHeight * (16 / 9));*/
 
 		trace("Setting width to " + FlxG.stage.stageHeight * (16 / 9));
 		trace("Setting height to " + FlxG.stage.stageHeight);
 
-		vlcBitmap.onVideoReady = onVLCVideoReady;
+		/*vlcBitmap.onVideoReady = onVLCVideoReady;
 		vlcBitmap.onComplete = onVLCComplete;
-		vlcBitmap.onError = onVLCError;
+		vlcBitmap.onError = onVLCError;*/
 
 		FlxG.stage.addEventListener(Event.ENTER_FRAME, update);
 
-		if (repeat)
+		/*if (repeat)
 			vlcBitmap.repeat = -1;
 		else
 			vlcBitmap.repeat = 0;
@@ -88,12 +88,12 @@ class MP4Handler
 		vlcBitmap.fullscreen = isFullscreen;
 
 		FlxG.addChildBelowMouse(vlcBitmap);
-		vlcBitmap.play(checkFile(path));
+		vlcBitmap.play(checkFile(path));*/
 		
 		if (outputTo != null)
 		{
 			// lol this is bad kek
-			vlcBitmap.alpha = 0;
+	//		vlcBitmap.alpha = 0;
 	
 			sprite = outputTo;
 		}
@@ -125,7 +125,7 @@ class MP4Handler
 
 	public function onVLCComplete()
 	{
-		vlcBitmap.stop();
+//		vlcBitmap.stop();
 
 		// Clean player, just in case! Actually no.
 
@@ -140,7 +140,7 @@ class MP4Handler
 			{
 				LoadingState.loadAndSwitchState(finishCallback);
 			}
-			vlcBitmap.dispose();
+//			vlcBitmap.dispose();
 
 			if (FlxG.game.contains(vlcBitmap))
 			{
@@ -163,7 +163,7 @@ class MP4Handler
 	{
 		if (FlxG.keys.justPressed.ENTER || FlxG.keys.justPressed.SPACE)
 		{
-			if (vlcBitmap.isPlaying)
+//			if (vlcBitmap.isPlaying)
 			{
 				onVLCComplete();
 			}
